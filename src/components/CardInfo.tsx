@@ -28,7 +28,13 @@ const PlainCard = styled.div`
     background: red;
 `;
 
-const Money = styled.div``;
+const Money = styled.div`
+    display: flex;
+    padding: 20px;
+    h3{
+        font-weight: bolder;
+    }
+`;
 
 const Label = styled.h5``;
 
