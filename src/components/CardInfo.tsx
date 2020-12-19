@@ -2,40 +2,44 @@
 
 import styled from 'styled-components';
 
-interface Props{
-    amount: number,
-    image: string,
+interface Props {
+	amount: number;
+	image: string;
 }
 
-const CardInfo: React.FC<Props> = ({amount, image}) => {
+const CardInfo: React.FC<Props> = ({ amount, image }) => {
 	return (
-		<>
-			<PlainCard>
-				<Money>
-					<img src='/img/money.svg' alt='money' />
-                    <h3>50.00</h3>
-				</Money>
-                <Label>SELL</Label>
-			</PlainCard>
-		</>
+		<Container>
+			<Money>
+				<img src={`/img/${image}.svg`} alt={image} />
+				<h3>{amount}</h3>
+			</Money>
+			<Label>SELL</Label>
+		</Container>
 	);
-}
+};
 
-const PlainCard = styled.div`
-    width : 100px;
-    height: 50px;
-    border: 1px solid black;
-    background: red;
+const Container = styled.div`
+    margin: 3rem;
+    width: 40%;
+    max-height: 120px;
+    border-radius: 20px;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.25);
 `;
 
 const Money = styled.div`
     display: flex;
-    padding: 20px;
-    h3{
-        font-weight: bolder;
-    }
+    justify-content: space-around;
+    align-items: center;
+	padding: 10px;
+	h3 {
+		font-weight: bolder;
+	}
 `;
 
-const Label = styled.h5``;
+const Label = styled.h5`
+    text-align: center;
+    padding-bottom: 10px;
+`;
 
 export default CardInfo;
