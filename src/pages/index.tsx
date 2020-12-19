@@ -27,8 +27,24 @@ export default function Home<Props>() {
 					</Header>
 
 					<CardInfo amount={30.0} image='money' />
-					<CardInfo amount={6} image='stockBox' />
+					<CardInfo amount={6} image='money' />
 				</Overview>
+
+				<Products>
+					<Header>
+						<h1>products</h1>
+						<select name='days'>
+							<option value='1'>Today</option>
+							<option value='7'>Roast</option>
+							<option value='15'>Chicken</option>
+						</select>
+					</Header>
+
+					<CardInfo amount={20} image='stockBox' />
+					<CardInfo amount={5} image='stockBox' />
+				</Products>
+
+				<RecentSell></RecentSell>
 			</DashboardContainer>
 		</>
 	);
@@ -39,3 +55,7 @@ const DashboardContainer = styled.div``;
 const Overview = styled.div``;
 
 const Header = styled.div``;
+
+const Products = styled.div``;
+
+const RecentSell = styled.div``;

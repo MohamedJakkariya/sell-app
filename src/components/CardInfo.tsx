@@ -1,13 +1,9 @@
 /** @format */
 
 import styled from 'styled-components';
+import { CardInfoProps } from '../types';
 
-interface Props {
-	amount: number;
-	image: string;
-}
-
-const CardInfo: React.FC<Props> = ({ amount, image }) => {
+const CardInfo: React.FC<CardInfoProps> = ({ amount, image }) => {
 	return (
 		<Container>
 			<Money>
@@ -20,17 +16,16 @@ const CardInfo: React.FC<Props> = ({ amount, image }) => {
 };
 
 const Container = styled.div`
-    margin: 3rem;
-    width: 40%;
-    max-height: 120px;
-    border-radius: 20px;
-    box-shadow: 1px 1px 5px rgba(0,0,0,0.25);
+	width: 40%;
+	max-height: 120px;
+	border-radius: 20px;
+	box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
 `;
 
 const Money = styled.div`
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
 	padding: 10px;
 	h3 {
 		font-weight: bolder;
@@ -38,8 +33,8 @@ const Money = styled.div`
 `;
 
 const Label = styled.h5`
-    text-align: center;
-    padding-bottom: 10px;
+	text-align: center;
+	padding-bottom: 10px;
 `;
 
 export default CardInfo;
