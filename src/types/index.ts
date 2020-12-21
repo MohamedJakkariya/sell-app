@@ -7,4 +7,10 @@ interface CardInfoProps {
 	image: string;
 }
 
-export type { CardExpandProps, CardInfoProps };
+interface LabelInfoProps {
+	amount?: number;
+	text: string;
+	bg: string;
+}
+
+export type { CardExpandProps, CardInfoProps, LabelInfoProps };

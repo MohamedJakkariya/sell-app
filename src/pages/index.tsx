@@ -1,6 +1,7 @@
 /** @format */
 import Head from 'next/head';
 import styled from 'styled-components';
+import CardExpand from '../components/CardExpand';
 import CardInfo from '../components/CardInfo';
 
 interface Props {}
@@ -44,7 +45,14 @@ export default function Home<Props>() {
 					<CardInfo amount={5} image='stockBox' />
 				</Products>
 
-				<RecentSell></RecentSell>
+				<RecentSell>
+					<Header>
+						<h1>Recent Sell</h1>
+						<img src='/img/gotoicon.svg' alt='goto icon' />
+					</Header>
+
+					<CardExpand />
+				</RecentSell>
 			</DashboardContainer>
 		</>
 	);
