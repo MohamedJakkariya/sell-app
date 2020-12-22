@@ -5,47 +5,111 @@ import { CardExpandProps } from '../types';
 import styled from 'styled-components';
 import LabelInfo from './Label';
 
-const CardExpand: React.FC<CardExpandProps> = () => {
+const CardExpand: React.FC<CardExpandProps> = ({
+	amount,
+	skus,
+	orderId,
+	descripton,
+	label,
+	labelColor,
+	labelAmount,
+	time,
+	when,
+}) => {
 	return (
 		<>
 			<CardExpandContainer>
-				<RightContainer>
-					<h4>
-						<span>#3</span>
-						Cxye3q
-					</h4>
-					<p>Made crispy with spicy</p>
-					<LabelInfo text="paid" bg="green"/>
-				</RightContainer>
 				<LeftContainer>
+					<h4>
+						<span>#{orderId}</span>
+						{skus}
+					</h4>
+					<p>{descripton}</p>
+					<LabelInfo text={label} bg={labelColor} amount={labelAmount} />
+				</LeftContainer>
+				<RightContainer>
 					<TopSection>
 						<AmountInfo>
 							<img src='/img/money.svg' alt='money icon' />
-							<h3>50.00</h3>
+							<h3>{amount}</h3>
 						</AmountInfo>
-						<img src='/img/menu_icon.svg' alt='menu icon ' />
+						<EditButton>
+							<img src='/img/menu_icon.svg' alt='menu icon ' />
+						</EditButton>
 					</TopSection>
 					<TimeLabel>
-						8.13 <span>pm</span>
+						{time} <span>{when}</span>
 					</TimeLabel>
-				</LeftContainer>
+				</RightContainer>
 			</CardExpandContainer>
 		</>
 	);
 };
 
-const CardExpandContainer = styled.div``;
+const CardExpandContainer = styled.div`
+	background-color: var(--white);
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 5px;
+	min-height: 100px;
+	max-height: 140px;
+	margin: 10px;
+	padding: 10px;
+	border-top-right-radius: 25px;
+	border-bottom-left-radius: 10px;
+`;
 
-const RightContainer = styled.div``;
+const LeftContainer = styled.div`
+	h4 {
+		font-weight: 300;
+		span {
+			font-weight: 700;
+			padding: 0 3px;
+		}
+	}
 
-const LeftContainer = styled.div``;
+	p {
+		padding: 10px 0;
+	}
+`;
 
-const Label = styled.p``;
+const RightContainer = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+`;
 
-const TopSection = styled.div``;
+const TopSection = styled.div`
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+`;
 
-const AmountInfo = styled.div``;
+const AmountInfo = styled.div`
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	width: 90%;
 
-const TimeLabel = styled.p``;
+	h3 {
+		font-size: 25px;
+		padding: 0 8px;
+	}
+`;
+
+const EditButton = styled.button`
+	background: inherit;
+	outline: none;
+	border: none;
+	padding-top: 10px;
+`;
+
+const TimeLabel = styled.p`
+	text-align: right;
+
+	span {
+		color: var(--red);
+	}
+`;
 
 export default CardExpand;

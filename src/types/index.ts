@@ -1,6 +1,16 @@
 /** @format */
 
-interface CardExpandProps {}
+interface CardExpandProps {
+	amount: number;
+	orderId: number;
+	skus: string;
+	descripton?: string;
+	label: string;
+	labelColor: string;
+	labelAmount?:number;
+	time: string;
+	when: string;
+}
 
 interface CardInfoProps {
 	amount: number;

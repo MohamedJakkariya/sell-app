@@ -1,10 +1,24 @@
 /** @format */
 
+:root {
+	--white: #fff;
+	--primary-color: #6d18ab;
+	--green: #2ba037;
+	--red: #dd636e;
+	--light-white-background: #dddddd;
+	--primary-color-light: #9d66d5;
+	--secondary-red: #c16752;
+}
+
 *,
 ::after,
 ::before {
 	box-sizing: border-box;
 	padding: 0;
 	margin: 0;
+	font-family: sans-serif;
 }
 
+html {
+	background: #dddddd;
+}

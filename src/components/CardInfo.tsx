@@ -16,6 +16,7 @@ const CardInfo: React.FC<CardInfoProps> = ({ amount, image }) => {
 };
 
 const Container = styled.div`
+	background: white;
 	width: 40%;
 	max-height: 120px;
 	border-radius: 20px;

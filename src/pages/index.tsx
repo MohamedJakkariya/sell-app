@@ -27,8 +27,10 @@ export default function Home<Props>() {
 						</select>
 					</Header>
 
-					<CardInfo amount={30.0} image='money' />
-					<CardInfo amount={6} image='money' />
+					<OverviewBody>
+						<CardInfo amount={30.0} image='money' />
+						<CardInfo amount={6} image='money' />
+					</OverviewBody>
 				</Overview>
 
 				<Products>
@@ -41,8 +43,10 @@ export default function Home<Props>() {
 						</select>
 					</Header>
 
-					<CardInfo amount={20} image='stockBox' />
-					<CardInfo amount={5} image='stockBox' />
+					<ProductsBody>
+						<CardInfo amount={20} image='stockBox' />
+						<CardInfo amount={5} image='stockBox' />
+					</ProductsBody>
 				</Products>
 
 				<RecentSell>
@@ -51,7 +55,30 @@ export default function Home<Props>() {
 						<img src='/img/gotoicon.svg' alt='goto icon' />
 					</Header>
 
-					<CardExpand />
+					<RecentSellBody>
+						<CardExpand
+							orderId={3}
+							skus='Cxaye3q'
+							amount={50.00}
+							label='paid'
+							labelColor='green'
+							time='9.00'
+							when='pm'
+							descripton='Made crispy with spicy'
+						/>
+
+						<CardExpand
+							orderId={2}
+							skus='yCslcqa2'
+							amount={70.00}
+							label='due'
+							labelColor='red'
+							labelAmount={15}
+							time='8.13'
+							when='pm'
+							descripton='Near shop Keeper boy'
+						/>
+					</RecentSellBody>
 				</RecentSell>
 			</DashboardContainer>
 		</>
@@ -60,10 +87,32 @@ export default function Home<Props>() {
 
 const DashboardContainer = styled.div``;
 
-const Overview = styled.div``;
+const Overview = styled.div`
+	display: flex;
+	flex-direction: column;
+`;
 
-const Header = styled.div``;
+const OverviewBody = styled.div`
+	display: flex;
+	justify-content: space-around;
+`;
 
-const Products = styled.div``;
+const Header = styled.div`
+	display: flex;
+	justify-content: space-between;
+	padding: 15px;
+	align-items: center;
+`;
 
-const RecentSell = styled.div``;
+const Products = styled(Overview)``;
+
+const ProductsBody = styled(OverviewBody)``;
+
+const RecentSell = styled.div`
+	padding: 0 10px;
+	margin: auto;
+`;
+
+const RecentSellBody = styled(OverviewBody)`
+	flex-direction: column;
+`;
