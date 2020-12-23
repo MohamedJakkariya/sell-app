@@ -2,13 +2,14 @@
 
 import styled from 'styled-components';
 import ProductList from '../components/ProdcutList';
+import AddOutlinedIcon from '@material-ui/icons/AddOutlined';
 
 export default function history() {
 	return (
 		<History>
 			<Header>
 				<BackButton>
-					<img src='/img/back.svg' alt='back icon' />
+					<AddOutlinedIcon />
 				</BackButton>
 
 				<select>
@@ -21,7 +22,7 @@ export default function history() {
 			<SubHeader>
 				<h1>Products</h1>
 				<button>
-					<img src='/img/add button.svg' alt='add button' />
+					<AddOutlinedIcon />
 				</button>
 			</SubHeader>
 
@@ -35,13 +36,28 @@ export default function history() {
 const History = styled.div`
 	min-height: 100%;
 	min-width: 100%;
-	margin: 3rem;
+	padding: 15px;
 `;
 
-const Header = styled.div``;
+const Header = styled.div`
+	display: flex;
+	justify-content: space-between;
+`;
 
-const BackButton = styled.button``;
+const BackButton = styled.button`
+	background: none;
+	outline: none;
+	border: none;
+`;
 
-const SubHeader = styled.div``;
+const SubHeader = styled.div`
+	padding: 10px 0;
+	display: flex;
+
+	button {
+		width: 25px;
+		height: 25px;
+	}
+`;
 
 const ProductLists = styled.div``;
