@@ -6,8 +6,11 @@ import { LabelInfoProps } from '../types';
 
 // Override name colors
 const defaultNameColors = {
+	primary: '#6d18ab',
 	green: '#2ba037',
 	red: '#DD636E',
+	primaryLight: '#9d66d5',
+	secondaryRed: '#c16752',
 };
 
 const LabelInfo: React.FC<LabelInfoProps> = ({ text, amount, bg }) => {
@@ -21,7 +24,7 @@ const LabelInfo: React.FC<LabelInfoProps> = ({ text, amount, bg }) => {
 };
 
 const Label = styled.span<{ bg: string }>`
-    display: inline-block;
+	display: inline-block;
 	background-color: ${(props) => props.bg};
 	color: white;
 	min-width: 70px;

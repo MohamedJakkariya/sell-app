@@ -1,20 +1,25 @@
 /** @format */
 
 import styled from 'styled-components';
+import Link from 'next/link';
 
 const Navigation = () => {
 	return (
 		<NavContainer>
 			<ContainerTop>
-				<HistoryButton>
-					<img src='/img/history.svg' alt='history icon' />
-				</HistoryButton>
+				<Link href='/history'>
+					<HistoryButton>
+						<img src='/img/history.svg' alt='history icon' />
+					</HistoryButton>
+				</Link>
 				<AddButton>
 					<img src='/img/add button.svg' alt='' />
 				</AddButton>
-				<StockButton>
-					<img src='/img/stock.svg' alt='history icon' />
-				</StockButton>
+				<Link href='/stocks'>
+					<StockButton>
+						<img src='/img/stock.svg' alt='history icon' />
+					</StockButton>
+				</Link>
 			</ContainerTop>
 			<ContainerBottom></ContainerBottom>
 		</NavContainer>
@@ -54,8 +59,8 @@ const HistoryButton = styled.button`
 	}
 
 	width: 100%;
-    height: 100%;
-    padding-top: 5px;
+	height: 100%;
+	padding-top: 5px;
 `;
 
 const StockButton = styled(HistoryButton)``;
