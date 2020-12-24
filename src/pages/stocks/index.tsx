@@ -59,7 +59,6 @@ const useStyles = makeStyles({
 		flexWrap: 'wrap',
 	},
 	formControl: {
-		// margin: theme.spacing(1),
 		minWidth: 120,
 	},
 });
@@ -109,7 +108,7 @@ export default function history() {
 									id='demo-dialog-select'
 									value={option}
 									onChange={handleChange}
-									input={<Input />}> 
+									input={<Input />}>
 									<MenuItem value='ALL'>
 										<em>All</em>
 									</MenuItem>
@@ -139,7 +138,71 @@ export default function history() {
 			</SubHeader>
 
 			<ProductLists>
-				<ProductList />
+				<ProductList
+					amount={40.45}
+					remStocks={6}
+					date='01/12/2000'
+					label='#gram'
+					labelColor='primary'
+					productId={3}
+					productName='Chicken - 65'
+					quantity={200}
+				/>
+
+				<ProductList
+					amount={20}
+					remStocks={42}
+					date='21/12/2000'
+					label='#litre'
+					labelColor='secondaryRed'
+					productId={3}
+					productName='Milk'
+					quantity={1}
+				/>
+
+				<ProductList
+					amount={30}
+					remStocks={42}
+					date='21/12/2000'
+					label='#1/2litre'
+					labelColor='secondaryRed'
+					productId={3}
+					productName='Milk'
+					quantity={1}
+				/>
+
+				<ProductList
+					amount={41}
+					remStocks={6}
+					date='01/12/2000'
+					label='#gram'
+					labelColor='primary'
+					productId={3}
+					productName='Chicken - 65'
+					quantity={200}
+				/>
+
+				<ProductList
+					amount={40}
+					remStocks={6}
+					date='01/12/2000'
+					label='#gram'
+					labelColor='primary'
+					productId={3}
+					productName='Chicken - 65'
+					quantity={200}
+				/>
+
+				<ProductList
+					amount={45}
+					remStocks={6}
+					date='01/12/2000'
+					label='#gram'
+					labelColor='primary'
+					productId={3}
+					productName='Chicken - 65'
+					quantity={200}
+				/>
 			</ProductLists>
 		</History>
 	);
@@ -168,4 +231,8 @@ const SubHeader = styled.div`
 	}
 `;
 
-const ProductLists = styled.div``;
+const ProductLists = styled.div`
+	display: flex;
+	flex-direction: column;
+	padding-bottom: 6rem;
+`;

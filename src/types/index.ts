@@ -7,7 +7,7 @@ interface CardExpandProps {
 	descripton?: string;
 	label: string;
 	labelColor: string;
-	labelAmount?:number;
+	labelAmount?: number;
 	time: string;
 	when: string;
 }
@@ -23,4 +23,20 @@ interface LabelInfoProps {
 	bg: string;
 }
 
-export type { CardExpandProps, CardInfoProps, LabelInfoProps };
+interface ProductListProps {
+	amount: number;
+	remStocks: number;
+	quantity: number;
+	productId: number;
+	productName: string;
+	label: string;
+	labelColor: string;
+	date: string;
+}
+
+export type {
+	CardExpandProps,
+	CardInfoProps,
+	LabelInfoProps,
+	ProductListProps,
+};

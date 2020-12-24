@@ -31,7 +31,8 @@ const Label = styled.span<{ bg: string }>`
 	max-width: 120px;
 	text-align: center;
 	border-radius: 25px;
-	padding: 5px 5px;
+	padding: 2px;
+	font-size: 12px;
 `;
 
 export default LabelInfo;
