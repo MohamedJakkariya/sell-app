@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import CardExpand from '../components/CardExpand';
 import CardInfo from '../components/CardInfo';
 import Layout from '../Layout';
+import productSellJson from '../json/productSell.json';
 
 interface Props {}
 
@@ -52,52 +53,32 @@ export default function Home<Props>() {
 						</Header>
 
 						<RecentSellBody>
-							<CardExpand
-								orderId={3}
-								skus='Cxaye3q'
-								amount={50.0}
-								label='paid'
-								labelColor='green'
-								time='9.00'
-								when='pm'
-								descripton='Made crispy with spicy'
-							/>
-
-							<CardExpand
-								orderId={2}
-								skus='yCslcqa2'
-								amount={70.0}
-								label='due'
-								labelColor='red'
-								labelAmount={15}
-								time='8.13'
-								when='pm'
-								descripton='Near shop Keeper boy'
-							/>
-
-							<CardExpand
-								orderId={2}
-								skus='yCslcqa2'
-								amount={70.0}
-								label='due'
-								labelColor='red'
-								labelAmount={15}
-								time='8.13'
-								when='pm'
-								descripton='Near shop Keeper boy'
-							/>
-
-							<CardExpand
-								orderId={2}
-								skus='yCslcqa2'
-								amount={70.0}
-								label='due'
-								labelColor='red'
-								labelAmount={15}
-								time='8.13'
-								when='pm'
-								descripton='Near shop Keeper boy'
-							/>
+							{productSellJson.map(
+								({
+									orderId,
+									skus,
+									amount,
+									label,
+									labelColor,
+									when,
+									time,
+									description,
+									labelAmount,
+								}) => (
+									<CardExpand
+										orderId={orderId}
+										skus={skus}
+										amount={amount}
+										label={label}
+										labelColor={labelColor}
+										time={time}
+										when={when}
+										descripton={description}
+										labelAmount={labelAmount}
+										key={orderId}
+									/>
+								),
+							)}
 						</RecentSellBody>
 					</RecentSell>
 				</DashboardContainer>

@@ -4,9 +4,9 @@ import React from 'react';
 import styled from 'styled-components';
 import ProductList from '../../components/ProductList';
 import AddOutlinedIcon from '@material-ui/icons/AddOutlined';
-import ArrowBackIosOutlinedIcon from '@material-ui/icons/ArrowBackIosOutlined';
 import IconButton from '@material-ui/core/IconButton';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import productListJson from '../../json/productList.json';
 import {
 	Button,
 	Dialog,
@@ -21,23 +21,9 @@ import {
 	Select,
 } from '@material-ui/core';
 import theme from '../../theme';
-import Link from 'next/link';
+import BackButton from '../../components/BackButton';
 
 const useStyles = makeStyles({
-	extendedButton: {
-		background: theme.palette.primary.main,
-		color: '#fff',
-
-		'&:hover': {
-			background: theme.palette.primary.main,
-		},
-		'&:focus': {
-			background: theme.palette.primary.main,
-		},
-		'&:active': {
-			background: theme.palette.primary.main,
-		},
-	},
 	extendedIconButton: {
 		background: theme.palette.secondary.main,
 		color: '#fff',
@@ -84,10 +70,7 @@ export default function history() {
 	return (
 		<History>
 			<Header>
-				<IconButton className={classes.extendedButton}>
-					<ArrowBackIosOutlinedIcon />
-				</IconButton>
-
+				<BackButton />
 				<Button onClick={handleClickOpen}>
 					All
 					<ArrowDropDownIcon />
@@ -112,7 +95,7 @@ export default function history() {
 									<MenuItem value='ALL'>
 										<em>All</em>
 									</MenuItem>
-									<MenuItem value={0}>Price - Low</MenuItem>
+									<MenuItem value={0}>Price-Low</MenuItem>
 									<MenuItem value={1}>Ascending</MenuItem>
 									<MenuItem value={2}>Descending</MenuItem>
 								</Select>
@@ -138,71 +121,30 @@ export default function history() {
 			</SubHeader>
 
 			<ProductLists>
-				<ProductList
-					amount={40.45}
-					remStocks={6}
-					date='01/12/2000'
-					label='#gram'
-					labelColor='primary'
-					productId={3}
-					productName='Chicken - 65'
-					quantity={200}
-				/>
-
-				<ProductList
-					amount={20}
-					remStocks={42}
-					date='21/12/2000'
-					label='#litre'
-					labelColor='secondaryRed'
-					productId={3}
-					productName='Milk'
-					quantity={1}
-				/>
-
-				<ProductList
-					amount={30}
-					remStocks={42}
-					date='21/12/2000'
-					label='#1/2litre'
-					labelColor='secondaryRed'
-					productId={3}
-					productName='Milk'
-					quantity={1}
-				/>
-
-				<ProductList
-					amount={41}
-					remStocks={6}
-					date='01/12/2000'
-					label='#gram'
-					labelColor='primary'
-					productId={3}
-					productName='Chicken - 65'
-					quantity={200}
-				/>
-
-				<ProductList
-					amount={40}
-					remStocks={6}
-					date='01/12/2000'
-					label='#gram'
-					labelColor='primary'
-					productId={3}
-					productName='Chicken - 65'
-					quantity={200}
-				/>
-
-				<ProductList
-					amount={45}
-					remStocks={6}
-					date='01/12/2000'
-					label='#gram'
-					labelColor='primary'
-					productId={3}
-					productName='Chicken - 65'
-					quantity={200}
-				/>
+				{productListJson.map(
+					({
+						amount,
+						remStocks,
+						date,
+						label,
+						labelColor,
+						productId,
+						productName,
+						quantity,
+					}) => (
+						<ProductList
+							amount={amount}
+							remStocks={remStocks}
+							date={date}
+							label={`#${label}`}
+							labelColor={labelColor}
+							productId={productId}
+							productName={productName}
+							quantity={quantity}
+							key={productId}
+						/>
+					),
+				)}
 			</ProductLists>
 		</History>
 	);

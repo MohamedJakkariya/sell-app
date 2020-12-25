@@ -1,0 +1,62 @@
+[
+	{
+		"productId": 6,
+		"amount": 200,
+		"remStocks": 3,
+		"label": "gram",
+		"labelColor": "primary",
+		"productName": "Chicken - 65",
+        "quantity": 200,
+        "date": "01/12/2000"
+	},
+	{
+		"productId": 1,
+		"amount": 100,
+		"remStocks": 4,
+		"label": "litre",
+		"labelColor": "secondaryRed",
+		"productName": "Milk",
+        "quantity": 1,
+        "date": "01/12/2000"
+    },
+    {
+		"productId": 2,
+		"amount": 100,
+		"remStocks": 4,
+		"label": "litre",
+		"labelColor": "secondaryRed",
+		"productName": "Milk",
+        "quantity": 1,
+        "date": "01/12/2000"
+    },
+    {
+		"productId": 3,
+		"amount": 200,
+		"remStocks": 3,
+		"label": "gram",
+		"labelColor": "primary",
+		"productName": "Chicken - 65",
+        "quantity": 200,
+        "date": "01/12/2000"
+    },
+    {
+		"productId": 4,
+		"amount": 200,
+		"remStocks": 3,
+		"label": "gram",
+		"labelColor": "primary",
+		"productName": "Chicken - 65",
+        "quantity": 200,
+        "date": "01/12/2000"
+    },
+    {
+		"productId": 5,
+		"amount": 200,
+		"remStocks": 3,
+		"label": "gram",
+		"labelColor": "primary",
+		"productName": "Chicken - 65",
+        "quantity": 200,
+        "date": "01/12/2000"
+	}
+]

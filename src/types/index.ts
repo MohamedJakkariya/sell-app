@@ -34,9 +34,12 @@ interface ProductListProps {
 	date: string;
 }
 
+interface BackButtonProps {}
+
 export type {
 	CardExpandProps,
 	CardInfoProps,
 	LabelInfoProps,
 	ProductListProps,
+	BackButtonProps,
 };
