@@ -4,6 +4,8 @@ import React from 'react';
 import { CardExpandProps } from '../types';
 import styled from 'styled-components';
 import LabelInfo from './Label';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
+import { IconButton } from '@material-ui/core';
 
 const CardExpand: React.FC<CardExpandProps> = ({
 	amount,
@@ -33,9 +35,9 @@ const CardExpand: React.FC<CardExpandProps> = ({
 							<img src='/img/money.svg' alt='money icon' />
 							<h3>{amount}</h3>
 						</AmountInfo>
-						<EditButton>
-							<img src='/img/menu_icon.svg' alt='menu icon ' />
-						</EditButton>
+						<IconButton>
+							<MoreVertIcon />
+						</IconButton>
 					</TopSection>
 					<TimeLabel>
 						{time} <span>{when}</span>
@@ -82,7 +84,7 @@ const RightContainer = styled.div`
 const TopSection = styled.div`
 	display: flex;
 	justify-content: space-between;
-	align-items: flex-start;
+	align-items: center;
 `;
 
 const AmountInfo = styled.div`
@@ -95,13 +97,6 @@ const AmountInfo = styled.div`
 		font-size: 25px;
 		padding: 0 8px;
 	}
-`;
-
-const EditButton = styled.button`
-	background: inherit;
-	outline: none;
-	border: none;
-	padding-top: 10px;
 `;
 
 const TimeLabel = styled.p`

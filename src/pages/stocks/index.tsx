@@ -153,7 +153,7 @@ export default function history() {
 const History = styled.div`
 	min-height: 100%;
 	min-width: 100%;
-	padding: 15px;
+	padding: 10px;
 `;
 
 const Header = styled.div`
