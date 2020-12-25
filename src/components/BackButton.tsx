@@ -12,7 +12,7 @@ const BackButton: React.FC<BackButtonProps> = () => {
 		extendedButton: {
 			background: theme.palette.primary.main,
 			color: '#fff',
-			padding: '5px',
+			padding: '7px',
 
 			'&:hover': {
 				background: theme.palette.primary.main,
