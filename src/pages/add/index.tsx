@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import BackButton from '../../components/BackButton';
 import Layout from '../../Layout';
 import SearchIcon from '@material-ui/icons/Search';
+import SelectProduct from '../../components/SelectProduct';
 
 const Add = () => {
 	return (
@@ -12,10 +13,20 @@ const Add = () => {
 				<Container>
 					<BackButton />
 					<Header>
-						<p>Search product</p>
+						<Input type='text' placeholder='Search Product' />
 						<SearchIcon className='searchIcon' />
 					</Header>
 				</Container>
+
+				<ProductOption>
+					<SelectProduct
+						productId={3}
+						label='#gram'
+						labelColor='primary'
+						productName='Chicken 65'
+						quantity={100}
+					/>
+				</ProductOption>
 			</Layout>
 		</>
 	);
@@ -39,9 +50,6 @@ const Header = styled.div`
 		font-size: 2rem;
 		font-weight: 300;
 	}
-	p {
-		font-weight: 300;
-	}
 
 	&:after {
 		content: '';
@@ -54,5 +62,17 @@ const Header = styled.div`
 		z-index: 1;
 	}
 `;
+
+const Input = styled.input`
+	flex: 1;
+	height: 30px;
+	background: transparent;
+	border: none;
+	font-weight: 300;
+	font-size: 20px;
+	outline: none;
+`;
+
+const ProductOption = styled.div``;
 
 export default Add;

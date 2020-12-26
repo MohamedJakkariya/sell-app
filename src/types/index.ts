@@ -36,10 +36,19 @@ interface ProductListProps {
 
 interface BackButtonProps {}
 
+interface SelectProdcutProps{
+	quantity: number;
+	productId: number;
+	productName: string;
+	label: string;
+	labelColor: string;
+}
+
 export type {
 	CardExpandProps,
 	CardInfoProps,
 	LabelInfoProps,
 	ProductListProps,
 	BackButtonProps,
+	SelectProdcutProps
 };

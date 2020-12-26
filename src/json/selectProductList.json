@@ -1,0 +1,44 @@
+[
+	{
+		"productId": 6,
+		"label": "gram",
+		"labelColor": "primary",
+		"productName": "Chicken - 65",
+		"quantity": 200
+	},
+	{
+		"productId": 1,
+		"label": "litre",
+		"labelColor": "secondaryRed",
+		"productName": "Milk",
+		"quantity": 1
+	},
+	{
+		"productId": 2,
+		"label": "litre",
+		"labelColor": "secondaryRed",
+		"productName": "Milk",
+		"quantity": 1
+	},
+	{
+		"productId": 3,
+		"label": "gram",
+		"labelColor": "primary",
+		"productName": "Chicken - 65",
+		"quantity": 200
+	},
+	{
+		"productId": 4,
+		"label": "gram",
+		"labelColor": "primary",
+		"productName": "Chicken - 65",
+		"quantity": 200
+	},
+	{
+		"productId": 5,
+		"label": "gram",
+		"labelColor": "primary",
+		"productName": "Chicken - 65",
+		"quantity": 200
+	}
+]
