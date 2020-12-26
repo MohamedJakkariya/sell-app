@@ -34,9 +34,11 @@ interface ProductListProps {
 	date: string;
 }
 
-interface BackButtonProps {}
+interface BackButtonProps {
+	back: any;
+}
 
-interface SelectProdcutProps{
+interface SelectProdcutProps {
 	quantity: number;
 	productId: number;
 	productName: string;
@@ -50,5 +52,5 @@ export type {
 	LabelInfoProps,
 	ProductListProps,
 	BackButtonProps,
-	SelectProdcutProps
+	SelectProdcutProps,
 };

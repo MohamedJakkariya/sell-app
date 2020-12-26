@@ -22,6 +22,7 @@ import {
 } from '@material-ui/core';
 import theme from '../../theme';
 import BackButton from '../../components/BackButton';
+import { useRouter } from 'next/router';
 
 const useStyles = makeStyles({
 	extendedIconButton: {
@@ -51,6 +52,7 @@ const useStyles = makeStyles({
 
 export default function history() {
 	const classes = useStyles();
+	const { back } = useRouter();
 
 	const [open, setOpen] = React.useState(false);
 	const [option, setOption] = React.useState<number | string>('');
@@ -70,7 +72,7 @@ export default function history() {
 	return (
 		<History>
 			<Header>
-				<BackButton />
+				<BackButton back={back} />
 				<Button onClick={handleClickOpen}>
 					All
 					<ArrowDropDownIcon />

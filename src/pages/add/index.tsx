@@ -6,13 +6,16 @@ import Layout from '../../Layout';
 import SearchIcon from '@material-ui/icons/Search';
 import SelectProduct from '../../components/SelectProduct';
 import selectProductList from '../../json/selectProductList.json';
+import { useRouter } from 'next/router';
 
 const Add = () => {
+	const { back } = useRouter();
+
 	return (
 		<>
 			<Layout addCheck={true}>
 				<Container>
-					<BackButton />
+					<BackButton back={back} />
 					<Header>
 						<Input type='text' placeholder='Search Product' />
 						<SearchIcon className='searchIcon' />
