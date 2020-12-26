@@ -5,6 +5,7 @@ import BackButton from '../../components/BackButton';
 import Layout from '../../Layout';
 import SearchIcon from '@material-ui/icons/Search';
 import SelectProduct from '../../components/SelectProduct';
+import selectProductList from '../../json/selectProductList.json';
 
 const Add = () => {
 	return (
@@ -19,13 +20,18 @@ const Add = () => {
 				</Container>
 
 				<ProductOption>
-					<SelectProduct
-						productId={3}
-						label='#gram'
-						labelColor='primary'
-						productName='Chicken 65'
-						quantity={100}
-					/>
+					{selectProductList.map(
+						({ productId, label, labelColor, productName, quantity }) => (
+							<SelectProduct
+								productId={productId}
+								label={label}
+								labelColor={labelColor}
+								productName={productName}
+								quantity={quantity}
+								key={productId}
+							/>
+						),
+					)}
 				</ProductOption>
 			</Layout>
 		</>
@@ -73,6 +79,8 @@ const Input = styled.input`
 	outline: none;
 `;
 
-const ProductOption = styled.div``;
+const ProductOption = styled.div`
+	padding-bottom: 6rem;
+`;
 
 export default Add;
