@@ -6,6 +6,9 @@ import styled from 'styled-components';
 import LabelInfo from './Label';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { IconButton } from '@material-ui/core';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
 
 const CardExpand: React.FC<CardExpandProps> = ({
 	amount,
@@ -35,9 +38,25 @@ const CardExpand: React.FC<CardExpandProps> = ({
 							<img src='/img/money.svg' alt='money icon' />
 							<h3>{amount}</h3>
 						</AmountInfo>
-						<IconButton>
+						<PopupState variant='popover' popupId='demo-popup-menu'>
+							{(popupState) => (
+								<React.Fragment>
+									<Button
+										variant='contained'
+										color='primary'
+										{...bindTrigger(popupState)}>
+										Open Menu
+									</Button>
+									<Menu {...bindMenu(popupState)}>
+										<MenuItem onClick={popupState.close}>Cake</MenuItem>
+										<MenuItem onClick={popupState.close}>Death</MenuItem>
+									</Menu>
+								</React.Fragment>
+							)}
+						</PopupState>
+						{/* <IconButton>
 							<MoreVertIcon />
-						</IconButton>
+						</IconButton> */}
 					</TopSection>
 					<TimeLabel>
 						{time} <span>{when}</span>

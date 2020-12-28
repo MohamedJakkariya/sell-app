@@ -54,10 +54,10 @@ const index = () => {
 	const { back } = useRouter();
 
 	const [open, setOpen] = React.useState(false);
-	const [option, setOption] = React.useState<number | string>('');
+	const [option, setOption] = React.useState<string>('all');
 
-	const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-		setOption(Number(event.target.value) || '');
+	const handleChange = (event: React.ChangeEvent<{ value: string }>) => {
+		setOption(event.target.value);
 	};
 
 	const handleClickOpen = () => {
@@ -97,9 +97,9 @@ const index = () => {
 										<MenuItem value='ALL'>
 											<em>All</em>
 										</MenuItem>
-										<MenuItem value={0}>Price-Low</MenuItem>
-										<MenuItem value={1}>Ascending</MenuItem>
-										<MenuItem value={2}>Descending</MenuItem>
+										<MenuItem value='priceLW'>Price-Low</MenuItem>
+										<MenuItem value='asc'>Ascending</MenuItem>
+										<MenuItem value='descs'>Descending</MenuItem>
 									</Select>
 								</FormControl>
 							</form>

@@ -4,10 +4,61 @@ import CardExpand from '../components/CardExpand';
 import CardInfo from '../components/CardInfo';
 import Layout from '../Layout';
 import productSellJson from '../json/productSell.json';
+import { useState } from 'react';
+import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import DoubleArrowIcon from '@material-ui/icons/DoubleArrow';
+import {
+	Button,
+	Dialog,
+	DialogActions,
+	DialogContent,
+	DialogTitle,
+	FormControl,
+	Input,
+	InputLabel,
+	makeStyles,
+	MenuItem,
+	Select,
+} from '@material-ui/core';
+import Link from 'next/link';
 
 interface Props {}
 
+const useStyles = makeStyles({
+	container: {
+		display: 'flex',
+		flexWrap: 'wrap',
+	},
+	formControl: {
+		minWidth: 120,
+	},
+});
+
 export default function Home<Props>() {
+	const classes = useStyles();
+
+	const [open, setOpen] = useState(false);
+	const [productOpen, setProductOpen] = useState(false);
+
+	const [option, setOption] = useState<string>('all');
+	const [productOption, setProductOption] = useState<string>('all');
+
+	// For overview option
+	const handleOptionChange = (event: React.ChangeEvent<{ value: string }>) =>
+		setOption(event.target.value);
+
+	const handleOptionClickOpen = () => setOpen(true);
+
+	const handleOptionClose = () => setOpen(false);
+
+	// For product option
+	const handleProductChange = (event: React.ChangeEvent<{ value: string }>) =>
+		setProductOption(event.target.value);
+
+	const handleProductClickOpen = () => setProductOpen(true);
+
+	const handleProductClose = () => setProductOpen(false);
+
 	return (
 		<>
 			<Layout>
@@ -15,13 +66,48 @@ export default function Home<Props>() {
 					<Overview>
 						<Header>
 							<h1>Overview</h1>
-							<select name='days'>
-								<option value='1'>Today</option>
-								<option value='7'>Last 7 Days</option>
-								<option value='15'>Last 15 Days</option>
-								<option value='30'>Last 30 Days</option>
-								<option value='6'>Last 6 Months</option>
-							</select>
+							<Button onClick={handleOptionClickOpen}>
+								All
+								<ArrowDropDownIcon />
+							</Button>
+
+							<Dialog
+								disableBackdropClick
+								disableEscapeKeyDown
+								open={open}
+								onClose={handleOptionClose}>
+								<DialogTitle>Select options</DialogTitle>
+								<DialogContent>
+									<form className={classes.container}>
+										<FormControl className={classes.formControl}>
+											<InputLabel id='demo-dialog-select-label'>
+												Choose
+											</InputLabel>
+											<Select
+												labelId='demo-dialog-select-label'
+												id='demo-dialog-select'
+												value={option}
+												onChange={handleOptionChange}
+												input={<Input />}>
+												<MenuItem value='all'>
+													<em>All</em>
+												</MenuItem>
+												<MenuItem value='low'>Low</MenuItem>
+												<MenuItem value='asc'>Ascending</MenuItem>
+												<MenuItem value='desc'>Descending</MenuItem>
+											</Select>
+										</FormControl>
+									</form>
+								</DialogContent>
+								<DialogActions>
+									<Button onClick={handleOptionClose} color='primary'>
+										Cancel
+									</Button>
+									<Button onClick={handleOptionClose} color='primary'>
+										Ok
+									</Button>
+								</DialogActions>
+							</Dialog>
 						</Header>
 
 						<OverviewBody>
@@ -33,11 +119,48 @@ export default function Home<Props>() {
 					<Products>
 						<Header>
 							<h1>products</h1>
-							<select name='days'>
-								<option value='1'>Mutton</option>
-								<option value='7'>Roast</option>
-								<option value='15'>Chicken</option>
-							</select>
+							<Button onClick={handleProductClickOpen}>
+								All
+								<ArrowDropDownIcon />
+							</Button>
+
+							<Dialog
+								disableBackdropClick
+								disableEscapeKeyDown
+								open={productOpen}
+								onClose={handleProductClose}>
+								<DialogTitle>Select options</DialogTitle>
+								<DialogContent>
+									<form className={classes.container}>
+										<FormControl className={classes.formControl}>
+											<InputLabel id='demo-dialog-select-label'>
+												Choose
+											</InputLabel>
+											<Select
+												labelId='demo-dialog-select-label'
+												id='demo-dialog-select'
+												value={productOption}
+												onChange={handleProductChange}
+												input={<Input />}>
+												<MenuItem value='all'>
+													<em>All</em>
+												</MenuItem>
+												<MenuItem value='low'>Low</MenuItem>
+												<MenuItem value='asc'>Ascending</MenuItem>
+												<MenuItem value='desc'>Descending</MenuItem>
+											</Select>
+										</FormControl>
+									</form>
+								</DialogContent>
+								<DialogActions>
+									<Button onClick={handleProductClose} color='primary'>
+										Cancel
+									</Button>
+									<Button onClick={handleProductClose} color='primary'>
+										Ok
+									</Button>
+								</DialogActions>
+							</Dialog>
 						</Header>
 
 						<ProductsBody>
@@ -49,7 +172,12 @@ export default function Home<Props>() {
 					<RecentSell>
 						<Header>
 							<h1>Recent Sell</h1>
-							<img src='/img/gotoicon.svg' alt='goto icon' />
+
+							<Link href='/history'>
+								<Button>
+									<DoubleArrowIcon className='icon' />
+								</Button>
+							</Link>
 						</Header>
 
 						<RecentSellBody>
@@ -106,6 +234,10 @@ const Header = styled.div`
 	justify-content: space-between;
 	padding: 15px;
 	align-items: center;
+
+	.icon {
+		font-weight: 300;
+	}
 `;
 
 const Products = styled(Overview)``;
