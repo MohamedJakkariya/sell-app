@@ -5,10 +5,11 @@ import { CardExpandProps } from '../types';
 import styled from 'styled-components';
 import LabelInfo from './Label';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import { IconButton } from '@material-ui/core';
+import { Button, IconButton } from '@material-ui/core';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
+import EditIcon from '@material-ui/icons/Edit';
 
 const CardExpand: React.FC<CardExpandProps> = ({
 	amount,
@@ -41,22 +42,17 @@ const CardExpand: React.FC<CardExpandProps> = ({
 						<PopupState variant='popover' popupId='demo-popup-menu'>
 							{(popupState) => (
 								<React.Fragment>
-									<Button
-										variant='contained'
-										color='primary'
-										{...bindTrigger(popupState)}>
-										Open Menu
-									</Button>
+									<IconButton {...bindTrigger(popupState)}>
+										<MoreVertIcon />
+									</IconButton>
 									<Menu {...bindMenu(popupState)}>
-										<MenuItem onClick={popupState.close}>Cake</MenuItem>
-										<MenuItem onClick={popupState.close}>Death</MenuItem>
+										<MenuItem onClick={popupState.close}>
+											<EditIcon style={{ marginRight: '10px' }} /> Edit
+										</MenuItem>
 									</Menu>
 								</React.Fragment>
 							)}
 						</PopupState>
-						{/* <IconButton>
-							<MoreVertIcon />
-						</IconButton> */}
 					</TopSection>
 					<TimeLabel>
 						{time} <span>{when}</span>
@@ -104,6 +100,10 @@ const TopSection = styled.div`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+
+	.editIcon {
+		padding: 10px;
+	}
 `;
 
 const AmountInfo = styled.div`
