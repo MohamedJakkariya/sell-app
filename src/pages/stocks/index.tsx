@@ -3,6 +3,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import ProductList from '../../components/ProductList';
+import ProductListInput from '../../components/ProductListInput';
 import AddOutlinedIcon from '@material-ui/icons/AddOutlined';
 import IconButton from '@material-ui/core/IconButton';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
@@ -55,19 +56,14 @@ export default function history() {
 	const { back } = useRouter();
 
 	const [open, setOpen] = React.useState(false);
-	const [option, setOption] = React.useState<number | string>('');
+	const [option, setOption] = React.useState<string>('all');
 
-	const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-		setOption(Number(event.target.value) || '');
-	};
+	const handleChange = (event: React.ChangeEvent<{ value: string }>) =>
+		setOption(event.target.value);
 
-	const handleClickOpen = () => {
-		setOpen(true);
-	};
+	const handleClickOpen = () => setOpen(true);
 
-	const handleClose = () => {
-		setOpen(false);
-	};
+	const handleClose = () => setOpen(false);
 
 	return (
 		<History>
@@ -94,12 +90,12 @@ export default function history() {
 									value={option}
 									onChange={handleChange}
 									input={<Input />}>
-									<MenuItem value='ALL'>
+									<MenuItem value='all'>
 										<em>All</em>
 									</MenuItem>
-									<MenuItem value={0}>Price-Low</MenuItem>
-									<MenuItem value={1}>Ascending</MenuItem>
-									<MenuItem value={2}>Descending</MenuItem>
+									<MenuItem value='priceLW'>Price-Low</MenuItem>
+									<MenuItem value='asc'>Ascending</MenuItem>
+									<MenuItem value='desc'>Descending</MenuItem>
 								</Select>
 							</FormControl>
 						</form>
@@ -123,6 +119,7 @@ export default function history() {
 			</SubHeader>
 
 			<ProductLists>
+				<ProductListInput />
 				{productListJson.map(
 					({
 						amount,

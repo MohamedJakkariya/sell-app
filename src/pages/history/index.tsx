@@ -56,17 +56,12 @@ const index = () => {
 	const [open, setOpen] = React.useState(false);
 	const [option, setOption] = React.useState<string>('all');
 
-	const handleChange = (event: React.ChangeEvent<{ value: string }>) => {
+	const handleChange = (event: React.ChangeEvent<{ value: string }>) =>
 		setOption(event.target.value);
-	};
 
-	const handleClickOpen = () => {
-		setOpen(true);
-	};
+	const handleClickOpen = () => setOpen(true);
 
-	const handleClose = () => {
-		setOpen(false);
-	};
+	const handleClose = () => setOpen(false);
 
 	return (
 		<>
@@ -94,7 +89,7 @@ const index = () => {
 										value={option}
 										onChange={handleChange}
 										input={<Input />}>
-										<MenuItem value='ALL'>
+										<MenuItem value='all'>
 											<em>All</em>
 										</MenuItem>
 										<MenuItem value='priceLW'>Price-Low</MenuItem>
