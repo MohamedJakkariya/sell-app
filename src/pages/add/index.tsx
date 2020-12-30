@@ -86,6 +86,8 @@ const Add = () => {
 		visibility: 'unset',
 	});
 
+	const dueBoxStyle = { visibility: pay.visibility } as React.CSSProperties;
+
 	const handlePayChange = () =>
 		setPay({
 			isPaid: !pay.isPaid,
@@ -131,7 +133,7 @@ const Add = () => {
 							<input type='text' placeholder='description' />
 						</TotalOverviewLeftBottom>
 					</TotalOverviewLeft>
-					<TotalOverviewRight dueBoxVisibility={pay.visibility}>
+					<TotalOverviewRight>
 						<div className='paidBox'>
 							<div className='mainPaidBox'>
 								<h3>Paid</h3>
@@ -150,7 +152,7 @@ const Add = () => {
 							<span className='extraSpan'></span>
 						</div>
 						<div className='dueBox'>
-							<div className='mainDueBox'>
+							<div className='mainDueBox' style={dueBoxStyle}>
 								<h3>Due</h3>
 								<input type='text' placeholder='0.00' />
 							</div>
@@ -301,7 +303,6 @@ const TotalOverviewRight = styled.div`
 			h3 {
 				color: var(--red);
 			}
-			visibility: ${(props) => props.dueBoxVisibility};
 		}
 		padding-left: 5px;
 
