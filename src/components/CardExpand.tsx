@@ -5,7 +5,7 @@ import { CardExpandProps } from '../types';
 import styled from 'styled-components';
 import LabelInfo from './Label';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import { Button, IconButton } from '@material-ui/core';
+import { IconButton } from '@material-ui/core';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';

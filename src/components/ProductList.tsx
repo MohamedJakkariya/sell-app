@@ -1,11 +1,14 @@
 /** @format */
 
+import React from 'react';
 import styled from 'styled-components';
 import Layout from '../Layout';
 import LabelInfo from './Label';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
-import { IconButton } from '@material-ui/core';
 import { ProductListProps } from '../types';
+import { IconButton, Menu, MenuItem } from '@material-ui/core';
+import EditIcon from '@material-ui/icons/Edit';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
+import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
 
 const ProdcutList: React.FC<ProductListProps> = ({
 	amount,
@@ -29,9 +32,20 @@ const ProdcutList: React.FC<ProductListProps> = ({
 							</h4>
 							<p>Quantity - {quantity}</p>
 						</div>
-						<IconButton>
-							<MoreVertIcon />
-						</IconButton>
+						<PopupState variant='popover' popupId='demo-popup-menu'>
+							{(popupState) => (
+								<React.Fragment>
+									<IconButton {...bindTrigger(popupState)}>
+										<MoreVertIcon />
+									</IconButton>
+									<Menu {...bindMenu(popupState)}>
+										<MenuItem onClick={popupState.close}>
+											<EditIcon style={{ marginRight: '10px' }} /> Edit
+										</MenuItem>
+									</Menu>
+								</React.Fragment>
+							)}
+						</PopupState>
 					</TopOverview>
 
 					<BottomOverview>
@@ -57,7 +71,7 @@ const Product = styled.div`
 	grid-template-columns: 6fr 2fr 2fr;
 	gap: 5px;
 
-	margin: 0.5rem 0 ;
+	margin: 0.5rem 0;
 `;
 
 const Overview = styled.div`
