@@ -24,6 +24,7 @@ import {
 import theme from '../../theme';
 import BackButton from '../../components/BackButton';
 import { useRouter } from 'next/router';
+import CheckOutLined from '@material-ui/icons/CheckOutLined';
 
 const useStyles = makeStyles({
 	extendedIconButton: {
@@ -58,12 +59,23 @@ export default function history() {
 	const [open, setOpen] = React.useState(false);
 	const [option, setOption] = React.useState<string>('all');
 
+	const [addClick, setAddClick] = React.useState(false);
+
 	const handleChange = (event: React.ChangeEvent<{ value: string }>) =>
 		setOption(event.target.value);
 
 	const handleClickOpen = () => setOpen(true);
 
 	const handleClose = () => setOpen(false);
+
+	const handleAddClick = (event) => {
+		console.log(event.currentTarget.className);
+		setAddClick(!addClick);
+
+		event.currentTarget.style.background = !addClick
+			? 'var(--red)'
+			: 'var(--green)';
+	};
 
 	return (
 		<History>
@@ -113,13 +125,23 @@ export default function history() {
 
 			<SubHeader>
 				<h1>Products</h1>
-				<IconButton className={classes.extendedIconButton}>
-					<AddOutlinedIcon />
+				<IconButton
+					onClick={(e) => handleAddClick(e)}
+					className={classes.extendedIconButton}>
+					<AddOutlinedIcon className={addClick ? 'crossButton' : ''} />
 				</IconButton>
+				{addClick ? (
+					<IconButton className={classes.extendedIconButton}>
+						<CheckOutLined />
+					</IconButton>
+				) : (
+					<></>
+				)}
 			</SubHeader>
 
 			<ProductLists>
-				<ProductListInput />
+				{addClick ? <ProductListInput /> : <></>}
+
 				{productListJson.map(
 					({
 						amount,
@@ -164,11 +186,10 @@ const SubHeader = styled.div`
 	padding: 10px 0;
 	display: flex;
 
-	button {
-		background: '#2ba037';
-		border: none;
-		outline: none;
-		border-radius: 50%;
+	.crossButton {
+		transform: rotate(45deg);
+		/* background: var(--red); */
+		transition: 0.5s transform;
 	}
 `;
 
