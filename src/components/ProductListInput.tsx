@@ -9,15 +9,18 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 
-const options = [
-	'Choose',
-	'gram',
-	'litre',
-	'kg',
-	'1/2 kg',
-	'1/2 lr',
-	'spoon',
-	'cup',
+const options: {
+	label: string;
+	labelColor: string;
+}[] = [
+	{ label: 'choose', labelColor: 'grey' },
+	{ label: 'gram', labelColor: 'var(--primary)' },
+	{ label: 'litre', labelColor: 'blue' },
+	{ label: 'kg', labelColor: 'var(--red)' },
+	{ label: '1/2 kg', labelColor: 'yellow' },
+	{ label: '1/2 lr', labelColor: 'violet' },
+	{ label: 'spoon', labelColor: 'orange' },
+	{ label: 'cup', labelColor: 'black' },
 ];
 
 const ITEM_HEIGHT = 48;
@@ -26,7 +29,7 @@ const ProdcutListInput = () => {
 	const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 	const open = Boolean(anchorEl);
 
-	const [label, setLabel] = React.useState<string>('Choose');
+	const [label, setLabel] = React.useState<string>('choose');
 
 	const handleClick = (event: React.MouseEvent<HTMLElement>) => {
 		setAnchorEl(event.currentTarget);
@@ -34,12 +37,11 @@ const ProdcutListInput = () => {
 
 	const handleClose = (e) => {
 		setAnchorEl(null);
-		handleSetLabel(e.target.innerText);
+		setLabel(e.target.innerText);
 	};
 
-	const handleSetLabel = (s: string) => {
-		setLabel(s);
-	};
+	const getColor = (label: string) =>
+		options.filter((option) => option.label === label)[0].labelColor;
 
 	return (
 		<Layout>
@@ -62,7 +64,7 @@ const ProdcutListInput = () => {
 					</TopOverview>
 
 					<BottomOverview>
-						<LabelInfo text={`#${label}`} bg='primary' />
+						<LabelInfo text={`#${label}`} bg={getColor(label)} />
 						<div>
 							<IconButton
 								aria-label='more'
@@ -80,15 +82,26 @@ const ProdcutListInput = () => {
 								PaperProps={{
 									style: {
 										maxHeight: ITEM_HEIGHT * 4.5,
-										width: '20ch',
+										width: '16ch',
 									},
 								}}>
-								{options.map((option) => (
+								{options.map((option, index) => (
 									<MenuItem
-										key={option}
-										selected={option === 'Choose'}
-										onClick={handleClose}>
-										{option}
+										key={index}
+										selected={option.label === 'Choose'}
+										onClick={handleClose}
+										style={{
+											display: 'flex',
+											justifyContent: 'space-between',
+										}}>
+										<span>{option.label}</span>
+										<span
+											style={{
+												background: getColor(option.label),
+												width: '15px',
+												height: '15px',
+												borderRadius: '50%',
+											}}></span>
 									</MenuItem>
 								))}
 							</Menu>
@@ -167,6 +180,16 @@ const BottomOverview = styled.div`
 	p {
 		font-size: 10px;
 		color: var(--red);
+	}
+
+	.colorRadius {
+		width: 15px;
+		height: 15px;
+		background: red;
+	}
+
+	.menuItem {
+		color: red;
 	}
 `;
 
