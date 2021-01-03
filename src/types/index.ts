@@ -15,6 +15,7 @@ interface CardExpandProps {
 interface CardInfoProps {
 	amount: number;
 	image: string;
+	title: string;
 }
 
 interface LabelInfoProps {

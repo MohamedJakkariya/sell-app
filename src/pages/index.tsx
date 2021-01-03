@@ -111,8 +111,8 @@ export default function Home<Props>() {
 						</Header>
 
 						<OverviewBody>
-							<CardInfo amount={30.0} image='money' />
-							<CardInfo amount={6} image='money' />
+							<CardInfo amount={30.0} image='money' title='TOTAL' />
+							<CardInfo amount={6} image='money' title='TODAY' />
 						</OverviewBody>
 					</Overview>
 
@@ -164,8 +164,8 @@ export default function Home<Props>() {
 						</Header>
 
 						<ProductsBody>
-							<CardInfo amount={20} image='stockBox' />
-							<CardInfo amount={5} image='stockBox' />
+							<CardInfo amount={20} image='stockBox' title='TOTAL' />
+							<CardInfo amount={5} image='stockBox' title='REMAINING' />
 						</ProductsBody>
 					</Products>
 
@@ -235,8 +235,10 @@ const Header = styled.div`
 	padding: 15px;
 	align-items: center;
 
-	.icon {
-		font-weight: 300;
+	.icon,
+	h1 {
+		font-weight: 400;
+		font-size: 24px;
 	}
 `;
 

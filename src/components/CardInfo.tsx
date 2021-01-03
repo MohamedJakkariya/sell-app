@@ -3,14 +3,14 @@
 import styled from 'styled-components';
 import { CardInfoProps } from '../types';
 
-const CardInfo: React.FC<CardInfoProps> = ({ amount, image }) => {
+const CardInfo: React.FC<CardInfoProps> = ({ amount, image, title }) => {
 	return (
 		<Container>
 			<Money>
 				<img src={`/img/${image}.svg`} alt={image} />
 				<h3>{amount}</h3>
 			</Money>
-			<Label>SELL</Label>
+			<Label>{title}</Label>
 		</Container>
 	);
 };
