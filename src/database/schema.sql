@@ -62,7 +62,6 @@ ENGINE = InnoDB;
 CREATE TABLE sells (
   id int NOT NULL AUTO_INCREMENT,
   shopId int,
-  name varchar(25),
   skus varchar(25),
   description varchar(10),
   amount int,
