@@ -20,7 +20,7 @@ import {
 	Select,
 } from '@material-ui/core';
 import theme from '../../theme';
-import BackButton from '../../components/BackButton';
+import BackButton from '../../components/layout/BackButton';
 import { useRouter } from 'next/router';
 
 const useStyles = makeStyles({

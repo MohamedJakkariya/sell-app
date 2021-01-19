@@ -2,9 +2,9 @@
 
 import { IconButton, makeStyles } from '@material-ui/core';
 import React from 'react';
-import { BackButtonProps } from '../types';
+import { BackButtonProps } from '../../types';
 import ArrowBackIosOutlinedIcon from '@material-ui/icons/ArrowBackIosOutlined';
-import theme from '../theme';
+import theme from '../../theme';
 import Link from 'next/link';
 
 const BackButton: React.FC<BackButtonProps> = ({ back }) => {

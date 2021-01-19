@@ -1,7 +1,7 @@
 /** @format */
 
 import styled from 'styled-components';
-import BackButton from '../../components/BackButton';
+import BackButton from '../../components/layout/BackButton';
 import Layout from '../../Layout';
 import SearchIcon from '@material-ui/icons/Search';
 import SelectProduct from '../../components/SelectProduct';
