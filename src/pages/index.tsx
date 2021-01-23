@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import CardExpand from '../components/CardExpand';
 import CardInfo from '../components/CardInfo';
 import Layout from '../Layout';
-import productSellJson from '../json/productSell.json';
+import dashboardJson from '../json/dashboard.json';
 import { useState } from 'react';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import DoubleArrowIcon from '@material-ui/icons/DoubleArrow';
@@ -22,7 +22,28 @@ import {
 } from '@material-ui/core';
 import Link from 'next/link';
 
-interface Props {}
+interface Props {
+	sells: {
+		orderId: number;
+		skus: string;
+		amount: number;
+		label: string;
+		labelColor: string;
+		time: string;
+		when: string;
+		labelAmount: number;
+		description: string;
+	}[];
+	stocks: {
+		name: string;
+		total: number;
+		remain: number;
+	}[];
+	overview: {
+		pastMonthAmount: number;
+		todayAmount: number;
+	};
+}
 
 const useStyles = makeStyles({
 	container: {
@@ -34,7 +55,7 @@ const useStyles = makeStyles({
 	},
 });
 
-export default function Home<Props>() {
+function Home({ sells, overview, stocks }: Props) {
 	const classes = useStyles();
 
 	const [open, setOpen] = useState(false);
@@ -111,8 +132,16 @@ export default function Home<Props>() {
 						</Header>
 
 						<OverviewBody>
-							<CardInfo amount={30.0} image='money' title='TOTAL' />
-							<CardInfo amount={6} image='money' title='TODAY' />
+							<CardInfo
+								amount={overview.pastMonthAmount}
+								image='money'
+								title='TOTAL'
+							/>
+							<CardInfo
+								amount={overview.todayAmount}
+								image='money'
+								title='TODAY'
+							/>
 						</OverviewBody>
 					</Overview>
 
@@ -181,7 +210,7 @@ export default function Home<Props>() {
 						</Header>
 
 						<RecentSellBody>
-							{productSellJson.map(
+							{sells.map(
 								({
 									orderId,
 									skus,
@@ -254,3 +283,17 @@ const RecentSell = styled.div`
 const RecentSellBody = styled(OverviewBody)`
 	flex-direction: column;
 `;
+
+// TODO: set initial get initial props functions
+Home.getInitialProps = async (context) => {
+	// const res = await fetch(`http://localhost:4000/`);
+	const { overview, sells, stocks } = dashboardJson;
+
+	return {
+		overview,
+		sells,
+		stocks,
+	};
+};
+
+export default Home;

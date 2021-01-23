@@ -1,0 +1,57 @@
+{
+	"overview": {
+		"pastMonthAmount": 450,
+		"todayAmount": 100
+	},
+	"stocks": [
+		{
+			"name": "Fish",
+			"total": 23,
+			"remain": 10
+		},
+		{
+			"name": "Meal",
+			"total": 41,
+			"remain": 10
+		},
+		{
+			"name": "Egg",
+			"total": 15,
+			"remain": 5
+		}
+	],
+	"sells": [
+		{
+			"orderId": 3,
+			"skus": "Cxaye3q",
+			"amount": 50.0,
+			"label": "paid",
+			"labelColor": "green",
+			"time": "9.00",
+			"when": "pm",
+			"description": "Made crispy with spicy"
+		},
+		{
+			"orderId": 1,
+			"skus": "Fkjve3q",
+			"amount": 100,
+			"label": "due",
+			"labelColor": "red",
+			"time": "10.00",
+			"when": "pm",
+			"labelAmount": 20,
+			"description": "Made crispy with spicy"
+		},
+		{
+			"orderId": 6,
+			"skus": "Fkuge3q",
+			"amount": 70,
+			"label": "due",
+			"labelColor": "red",
+			"time": "10.00",
+			"when": "pm",
+			"labelAmount": 20,
+			"description": "Made crispy with spicy"
+		}
+	]
+}
