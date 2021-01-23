@@ -23,6 +23,19 @@ import theme from '../../theme';
 import BackButton from '../../components/layout/BackButton';
 import { useRouter } from 'next/router';
 
+interface Props {
+	result: boolean;
+	data: {
+		id: number;
+		name: string;
+		label: string;
+		labelColor: string;
+		amount: string;
+		remStock?: number;
+		totalStock?: number;
+	}[];
+}
+
 const useStyles = makeStyles({
 	extendedIconButton: {
 		background: theme.palette.secondary.main,
@@ -49,7 +62,7 @@ const useStyles = makeStyles({
 	},
 });
 
-const index = () => {
+const History = ({ data, result }: Props) => {
 	const classes = useStyles();
 	const { back } = useRouter();
 
@@ -111,9 +124,9 @@ const index = () => {
 				</Header>
 
 				<SellProducts>
-					{productSellJson.map(
+					{data.map(
 						({
-							orderId,
+							id,
 							skus,
 							amount,
 							label,
@@ -124,16 +137,16 @@ const index = () => {
 							labelAmount,
 						}) => (
 							<CardExpand
-								orderId={orderId}
+								orderId={id}
 								skus={skus}
-								amount={amount}
+								amount={+amount}
 								label={label}
 								labelColor={labelColor}
 								time={time}
 								when={when}
 								descripton={description}
 								labelAmount={labelAmount}
-								key={orderId}
+								key={id}
 							/>
 						),
 					)}
@@ -155,4 +168,15 @@ const Header = styled.div`
 	padding: 10px;
 `;
 
-export default index;
+// TODO: set initial get initial props functions
+History.getInitialProps = async (context) => {
+	const res = await fetch(`http://localhost:4000/api/shop/fetch/products/1`);
+	const { result, data } = await res.json();
+
+	return {
+		result,
+		data,
+	};
+};
+
+export default History;
