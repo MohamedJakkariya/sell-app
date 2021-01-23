@@ -5,3 +5,5 @@ import reducer from './reducer';
 
 // TODO: create a store creator
 const makeStore = (initialState) => createStore(reducer, initialState);
+
+export default makeStore;
