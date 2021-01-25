@@ -4,7 +4,6 @@ import React from 'react';
 import styled from 'styled-components';
 import Layout from '../../Layout';
 import CardExpand from '../../components/CardExpand';
-import productSellJson from '../../json/productSell.json';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import {
 	Button,
@@ -22,6 +21,7 @@ import {
 import theme from '../../theme';
 import BackButton from '../../components/layout/BackButton';
 import { useRouter } from 'next/router';
+import { server } from '../../config';
 
 interface Props {
 	result: boolean;
@@ -33,6 +33,9 @@ interface Props {
 		amount: string;
 		remStock?: number;
 		totalStock?: number;
+		createdAt: string;
+		description?: string;
+		labelAmount?: number;
 	}[];
 }
 
@@ -127,26 +130,24 @@ const History = ({ data, result }: Props) => {
 					{data.map(
 						({
 							id,
-							skus,
 							amount,
+							name,
 							label,
 							labelColor,
-							when,
-							time,
+							createdAt,
 							description,
 							labelAmount,
 						}) => (
 							<CardExpand
 								orderId={id}
-								skus={skus}
+								name={name}
 								amount={+amount}
 								label={label}
 								labelColor={labelColor}
-								time={time}
-								when={when}
 								descripton={description}
 								labelAmount={labelAmount}
 								key={id}
+								createdAt={createdAt}
 							/>
 						),
 					)}
@@ -170,7 +171,7 @@ const Header = styled.div`
 
 // TODO: set initial get initial props functions
 History.getInitialProps = async (context) => {
-	const res = await fetch(`http://localhost:4000/api/shop/fetch/products/1`);
+	const res = await fetch(`${server}/api/shop/fetch/products/1`);
 	const { result, data } = await res.json();
 
 	return {

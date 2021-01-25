@@ -10,17 +10,17 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
 import EditIcon from '@material-ui/icons/Edit';
+import moment from 'moment';
 
 const CardExpand: React.FC<CardExpandProps> = ({
 	amount,
-	skus,
+	name,
 	orderId,
 	descripton,
 	label,
 	labelColor,
 	labelAmount,
-	time,
-	when,
+	createdAt,
 }) => {
 	return (
 		<>
@@ -28,9 +28,9 @@ const CardExpand: React.FC<CardExpandProps> = ({
 				<LeftContainer>
 					<h4>
 						<span>#{orderId}</span>
-						{skus}
+						{name}
 					</h4>
-					<p>{descripton}</p>
+					<p>{descripton ?? 'make it spicy'}</p>
 					<LabelInfo text={label} bg={labelColor} amount={labelAmount} />
 				</LeftContainer>
 				<RightContainer>
@@ -54,9 +54,7 @@ const CardExpand: React.FC<CardExpandProps> = ({
 							)}
 						</PopupState>
 					</TopSection>
-					<TimeLabel>
-						{time} <span>{when}</span>
-					</TimeLabel>
+					<TimeLabel>{moment(new Date(createdAt)).format('LT')}</TimeLabel>
 				</RightContainer>
 			</CardExpandContainer>
 		</>

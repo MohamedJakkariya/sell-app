@@ -3,13 +3,12 @@
 interface CardExpandProps {
 	amount: number;
 	orderId: number;
-	skus: string;
+	name: string;
 	descripton?: string;
 	label: string;
 	labelColor: string;
 	labelAmount?: number;
-	time: string;
-	when: string;
+	createdAt: string;
 }
 
 interface CardInfoProps {
