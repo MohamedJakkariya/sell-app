@@ -22,11 +22,12 @@ import theme from '../../theme';
 import BackButton from '../../components/layout/BackButton';
 import { useRouter } from 'next/router';
 import { server } from '../../config';
+import productSellJson from '../../json/productSell.json'
 
 interface Props {
 	result: boolean;
 	data: {
-		id: number;
+		orderId: number;
 		name: string;
 		label: string;
 		labelColor: string;
@@ -129,7 +130,7 @@ const History = ({ data, result }: Props) => {
 				<SellProducts>
 					{data.map(
 						({
-							id,
+							orderId,
 							amount,
 							name,
 							label,
@@ -139,14 +140,14 @@ const History = ({ data, result }: Props) => {
 							labelAmount,
 						}) => (
 							<CardExpand
-								orderId={id}
+								orderId={orderId}
 								name={name}
 								amount={+amount}
 								label={label}
 								labelColor={labelColor}
 								descripton={description}
 								labelAmount={labelAmount}
-								key={id}
+								key={orderId}
 								createdAt={createdAt}
 							/>
 						),
@@ -171,12 +172,10 @@ const Header = styled.div`
 
 // TODO: set initial get initial props functions
 History.getInitialProps = async (context) => {
-	const res = await fetch(`${server}/api/shop/fetch/products/1`);
-	const { result, data } = await res.json();
-
+	// const res = await fetch(`${server}/api/shop/fetch/products/1`);
+	// const { result, data } = await res.json();
 	return {
-		result,
-		data,
+		data: productSellJson,
 	};
 };
 

@@ -29,8 +29,7 @@ interface Props {
 		amount: number;
 		label: string;
 		labelColor: string;
-		time: string;
-		when: string;
+		createdAt: string;
 		labelAmount: number;
 		description: string;
 	}[];
@@ -217,19 +216,17 @@ function Home({ sells, overview, stocks }: Props) {
 									amount,
 									label,
 									labelColor,
-									when,
-									time,
+									createdAt,
 									description,
 									labelAmount,
 								}) => (
 									<CardExpand
 										orderId={orderId}
-										skus={skus}
+										name={skus}
 										amount={amount}
 										label={label}
 										labelColor={labelColor}
-										time={time}
-										when={when}
+										createdAt={createdAt}
 										descripton={description}
 										labelAmount={labelAmount}
 										key={orderId}

@@ -27,8 +27,7 @@
 			"amount": 50.0,
 			"label": "paid",
 			"labelColor": "green",
-			"time": "9.00",
-			"when": "pm",
+			"createdAt": "Sat Feb 27 2021 13:54:19 GMT+0530 (India Standard Time)",
 			"description": "Made crispy with spicy"
 		},
 		{
@@ -37,8 +36,7 @@
 			"amount": 100,
 			"label": "due",
 			"labelColor": "red",
-			"time": "10.00",
-			"when": "pm",
+			"createdAt": "Sat Feb 27 2021 13:54:19 GMT+0530 (India Standard Time)",
 			"labelAmount": 20,
 			"description": "Made crispy with spicy"
 		},
@@ -48,8 +46,7 @@
 			"amount": 70,
 			"label": "due",
 			"labelColor": "red",
-			"time": "10.00",
-			"when": "pm",
+			"createdAt": "Sat Feb 27 2021 13:54:19 GMT+0530 (India Standard Time)",
 			"labelAmount": 20,
 			"description": "Made crispy with spicy"
 		}
